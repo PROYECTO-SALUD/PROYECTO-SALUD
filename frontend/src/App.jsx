@@ -6,6 +6,7 @@ import Ayuda from './pages/Usuario/Ayuda';
 import RecuperarContrasena from './pages/Usuario/RecuperarContrasena';
 import ValidarCodigo from './pages/Usuario/ValidarCodigo';
 import CambioContrasena from './pages/Usuario/CambioContrasena';
+import PanelPaciente from './pages/Paciente/PanelPaciente';
 
 
 import Accesibilidad from './components/Accesibilidad';
@@ -51,6 +52,9 @@ function App() {
         <Route path='/cambiar-contrasena' element={<CambioContrasena />} />
 
         <Route path='/accesibilidad' element={<Accesibilidad />} />
+        
+        {/* RUTA: Panel del Paciente */}
+        <Route path='/panel-paciente' element={<PanelPaciente />} />
       
         {/* Siempre debe ir al final. REGLA DE SEGURIDAD: Si alguien escribe una ruta que no existe, lo mandamos al Login */}
         <Route path='*' element={<Navigate to='/login' />} />

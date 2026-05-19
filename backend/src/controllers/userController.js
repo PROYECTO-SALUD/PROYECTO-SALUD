@@ -1,4 +1,6 @@
 const User = require('../models/userModel');
+const { enviarCodigoRecuperacion } = require('../utils/emailServices');
+
 // 1. Login / Buscar por email
 loginUser = async (req, res) => {
     try {
@@ -7,10 +9,10 @@ loginUser = async (req, res) => {
         if (!correo) {
             return res.status(404).json({ mensaje: "El correo es obligatorio" });
         }
-        if (user.length === 0) {
+        if (!user) {
             return res.status(404).json({ mensaje: "Usuario no encontrado" });
         }
-        res.json(user[0]);
+        res.json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error en el servidor al buscar usuario" });
@@ -32,23 +34,25 @@ recuperarContrasena = async (req, res) => {
         const user = await User.findByEmail(correo);
 
         // Si no existe ningún usuario con ese correo
-        if (user.length === 0) {
+        if (!user) {
             return res.status(404).json({ mensaje: "El correo no está registrado" });
         }
 
-
-    // Si el correo existe, generamos un código aleatorio de 6 dígitos
+        // Si el correo existe, generamos un código aleatorio de 6 dígitos
         const codigoRecuperacion = Math.floor(100000 + Math.random() * 900000);
         
         // Por ahora lo mostramos en consola para probar
         console.log("Código de recuperación:", codigoRecuperacion);
+
         // Guardamos el código en la base de datos
         await User.guardarCodigoRecuperacion(correo, codigoRecuperacion);
+
+        // Enviamos el código al correo del usuario
+        await enviarCodigoRecuperacion(correo, codigoRecuperacion);
         
-        // Si el correo existe, respondemos correctamente
+        // Si el correo existe, respondemos correctamente SIN enviar el código por seguridad
         return res.status(200).json({
-            mensaje: "Correo encontrado. Código generado correctamente.",
-            codigo: codigoRecuperacion
+            mensaje: "Correo encontrado. Código generado correctamente."
         });
     }
 
