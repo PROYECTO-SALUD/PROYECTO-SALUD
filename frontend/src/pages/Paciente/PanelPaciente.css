@@ -1,0 +1,324 @@
+.panel-paciente {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(180deg, #f8fbfc 0%, #eef3f6 100%);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: #0f172a;
+    overflow: auto;
+  
+    /* Espacio para que el contenido no quede debajo del header fijo */
+    padding-top: 96px;
+  }
+  
+  .panel-paciente * {
+    box-sizing: border-box;
+  }
+  
+  /* HEADER */
+  .pp-topbar {
+    width: 100%;
+    height: 96px;
+    padding: 0 48px;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .pp-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  /* LOGO */
+  .pp-logo-box {
+    width: 92px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .pp-logo-box img {
+    height: 68px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .pp-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .pp-brand-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  
+  .pp-brand-sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+  }
+  
+  /* PERFIL */
+  .pp-user-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #dbe3ea;
+    border-radius: 999px;
+    padding: 7px 16px 7px 7px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+  
+  .pp-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #9fe1cb;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 14px;
+    font-weight: 800;
+    color: #085041;
+  }
+  
+  .pp-user-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  /* CONTENIDO */
+  .pp-content {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 42px 28px 64px;
+  }
+  
+  /* SALUDO */
+  .pp-greeting {
+    background: linear-gradient(135deg, #ffffff 0%, #eaf5ff 100%);
+    border: 1px solid #cfe8ff;
+    border-radius: 26px;
+    padding: 38px;
+    margin-bottom: 32px;
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .pp-greeting h1 {
+    font-size: 38px;
+    font-weight: 850;
+    color: #0f172a;
+    margin: 0 0 10px;
+    letter-spacing: -0.9px;
+  }
+  
+  .pp-greeting p {
+    font-size: 17px;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+  }
+  
+  /* TARJETAS */
+  .pp-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 380px));
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  .pp-nav-card {
+    min-height: 190px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    transition: all 0.22s ease;
+  
+    font-family: inherit;
+  }
+  
+  .pp-nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+    border-color: #a7e5d1;
+  }
+  
+  .pp-nav-card:focus {
+    outline: none;
+    border-color: #1d9e75;
+    box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.16);
+  }
+  
+  .pp-nav-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 23px;
+    margin-bottom: 18px;
+
+    align-self: center;
+  }
+  
+  .pp-nav-icon i {
+    font-size: 23px;
+  }
+  
+  .pp-ic-verde {
+    background: #dcfce7;
+    color: #0f766e;
+  }
+  
+  .pp-ic-azul {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+  
+  .pp-ic-amber {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  
+  .pp-ic-morado {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+  
+  .pp-nav-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 8px;
+  }
+  
+  .pp-nav-desc {
+    font-size: 15px;
+    font-weight: 500;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 320px;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .panel-paciente {
+      padding-top: 88px;
+    }
+  
+    .pp-topbar {
+      height: 88px;
+      padding: 0 22px;
+    }
+  
+    .pp-logo-box {
+      width: 78px;
+      height: 66px;
+    }
+  
+    .pp-logo-box img {
+      height: 58px;
+    }
+  
+    .pp-brand-name {
+      font-size: 16px;
+    }
+  
+    .pp-brand-sub {
+      font-size: 12px;
+    }
+  
+    .pp-content {
+      padding: 30px 18px 48px;
+    }
+  
+    .pp-greeting {
+      padding: 28px;
+    }
+  
+    .pp-greeting h1 {
+      font-size: 29px;
+    }
+  
+    .pp-nav-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 520px) {
+    .pp-brand {
+      gap: 10px;
+    }
+  
+    .pp-logo-box {
+      width: 64px;
+    }
+  
+    .pp-logo-box img {
+      height: 48px;
+    }
+  
+    .pp-brand-sub {
+      display: none;
+    }
+  
+    .pp-user-name {
+      display: none;
+    }
+  
+    .pp-user-chip {
+      padding: 5px;
+    }
+  
+    .pp-avatar {
+      width: 38px;
+      height: 38px;
+    }
+  
+    .pp-greeting h1 {
+      font-size: 25px;
+    }
+  
+    .pp-nav-card {
+      padding: 24px;
+    }
+  }
