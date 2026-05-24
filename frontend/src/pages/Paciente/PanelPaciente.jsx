@@ -1,11 +1,36 @@
+import { useEffect, useState } from "react";
 import BotonCerrarSesion from '../../components/BotonCerrarSesion';
 import './PanelPaciente.css';
 
 
 
 export default function PanelPaciente() {
+  
+  const [fechaHora, setFechaHora] = useState(new Date()); {/*Hora y fecha*/}
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setFechaHora(new Date());
+    }, 1000);
+  
+    return () => clearInterval(intervalo);
+  }, []);
+  
+  const fechaActual = fechaHora.toLocaleDateString("es-CO", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  
+  const horaActual = fechaHora.toLocaleTimeString("es-CO", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <div className="panel-paciente">
+
       <header className="pp-topbar">
         <div className="pp-brand">
           <div className="pp-logo-box">
@@ -18,10 +43,26 @@ export default function PanelPaciente() {
           </div>
         </div>
 
-        <div className="pp-user-chip">
-          <div className="pp-avatar">MA</div>
-          <div className="pp-user-name">María Ángel</div>
-        </div>
+      <div className="pp-header-datetime">
+        <div className="pp-header-date">
+        <i className="pi pi-calendar" />
+        <span>{fechaActual}</span>
+      </div>
+
+    <div className="pp-header-time">
+      <i className="pi pi-clock" />
+      <span>{horaActual}</span>
+    </div>
+  </div>
+
+    <div className="pp-header-actions">
+    <div className="pp-user-chip">
+    <div className="pp-avatar">MA</div>
+    <div className="pp-user-name">María Ángel</div>
+  </div>
+
+  <BotonCerrarSesion />
+</div>
       </header>
 
       <main className="pp-content">
@@ -79,7 +120,6 @@ export default function PanelPaciente() {
         </section>
         
       </main>
-      <BotonCerrarSesion/>
     </div>
   );
 }

@@ -51,11 +51,11 @@ function App() {
         {/* Ruta para cambiar la contraseña */}
         <Route path='/cambiar-contrasena' element={<CambioContrasena />} />
 
+        {/*Ruta para accesibilidad*/}
         <Route path='/accesibilidad' element={<Accesibilidad />} />
         
         {/* RUTA: Panel del Paciente */}
         <Route path='/panel-paciente' element={<PanelPaciente />} />
-      
         {/* Siempre debe ir al final. REGLA DE SEGURIDAD: Si alguien escribe una ruta que no existe, lo mandamos al Login */}
         <Route path='*' element={<Navigate to='/login' />} />
 
