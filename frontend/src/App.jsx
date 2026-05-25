@@ -4,13 +4,16 @@ import Login from './pages/usuario/Login';
 import Registro from './pages/usuario/Registro';
 import Ayuda from './pages/Usuario/Ayuda';
 import RecuperarContrasena from './pages/Usuario/RecuperarContrasena';
-import ValidarCodigo from './pages/Usuario/ValidarCodigo';
-import CambioContrasena from './pages/Usuario/CambioContrasena';
+
 import PanelPaciente from './pages/Paciente/PanelPaciente';
 
 
 import Accesibilidad from './components/Accesibilidad';
 import BotonAyuda from './components/BotonAyuda';
+import ValidarCodigo from './pages/Usuario/ValidarCodigo';
+import CambioContrasena from './pages/Usuario/CambioContrasena';
+import RegistroPaciente from './pages/Paciente/RegistroPaciente';
+import RegistroMedico from './pages/Medico/RegistroMedico';
 
 // Creamos componentes rapidos para probar que las rutas funcionen
 const AdminPanel = () => <div className='p-5'><h1>Panel de Administracion</h1><p>Bienvenido dueño del centro medico.</p></div>;
@@ -49,13 +52,12 @@ function App() {
         {/* Ruta para validar el código de recuperación */}
         <Route path='/validar-codigo' element={<ValidarCodigo />} />
         {/* Ruta para cambiar la contraseña */}
-        <Route path='/cambiar-contrasena' element={<CambioContrasena />} />
+        <Route path='/cambio-contrasena' element={<CambioContrasena />} />
+        {/* Ruta para completar datos del paciente*/}
+        <Route path='/registro-paciente' element={<RegistroPaciente />} />
+        {/* Ruta para completar datos del medico*/}
+        <Route path='/registro-medico' element={<RegistroMedico />} />
 
-        {/*Ruta para accesibilidad*/}
-        <Route path='/accesibilidad' element={<Accesibilidad />} />
-        
-        {/* RUTA: Panel del Paciente */}
-        <Route path='/panel-paciente' element={<PanelPaciente />} />
         {/* Siempre debe ir al final. REGLA DE SEGURIDAD: Si alguien escribe una ruta que no existe, lo mandamos al Login */}
         <Route path='*' element={<Navigate to='/login' />} />
 
