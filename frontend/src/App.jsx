@@ -1,7 +1,7 @@
 
 import { BrowserRouter as Router, Routes,Route, Navigate } from 'react-router-dom';
-import Login from './pages/usuario/Login';
-import Registro from './pages/usuario/Registro';
+import Login from './pages/Usuario/Login';
+import Registro from './pages/Usuario/Registro';
 import Ayuda from './pages/Usuario/Ayuda';
 import RecuperarContrasena from './pages/Usuario/RecuperarContrasena';
 
@@ -18,7 +18,7 @@ import RegistroMedico from './pages/Medico/RegistroMedico';
 // Creamos componentes rapidos para probar que las rutas funcionen
 const AdminPanel = () => <div className='p-5'><h1>Panel de Administracion</h1><p>Bienvenido dueño del centro medico.</p></div>;
 const MedicoPanel = () => <div className='p-5'><h1>Panel del Medico</h1><p>Ver Citas e Historias Clinicas.</p></div>;
-const PacientePanel = () => <div className='p-5'><h1>Panel del Paciente</h1><p>Aqui se agendaran citas medicas.</p></div>;
+
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
         <Route path='/medico' element={<MedicoPanel />} />
 
         {/* RUTA: La sala de espera del Paciente*/}
-        <Route path='/paciente' element={<PacientePanel />} />
+        <Route path='/panel-paciente' element={<PanelPaciente />} />
 
         {/* RUTA: Registro Usuario*/}
         <Route path='/registro' element={<Registro />} />

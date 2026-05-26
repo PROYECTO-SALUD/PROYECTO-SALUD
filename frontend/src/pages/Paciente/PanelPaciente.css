@@ -1,13 +1,14 @@
 .panel-paciente {
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(180deg, #f8fbfc 0%, #eef3f6 100%);
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background-image: url('/imagenes/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #0f172a;
     overflow: auto;
-  
-    /* Espacio para que el contenido no quede debajo del header fijo */
     padding-top: 96px;
+  
   }
   
   .panel-paciente * {
