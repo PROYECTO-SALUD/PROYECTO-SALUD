@@ -5,8 +5,8 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import BotonAyuda from '../../components/BotonAyuda';
-
 import  axios  from 'axios';
+
 const Login = () => {
     const navigate = useNavigate(); //Prepara la funcion para enviar al usuario de Login a otra pagina
     // 1. Estados para guardar lo que el usuario escribe
@@ -16,15 +16,25 @@ const Login = () => {
         e.preventDefault();
         // Aqui se concta con el archivo usuarioApi.js mas adelante
         console.log("Intentando ingresar:", email, password);
+        //Peticion HTTP al backend
         try {
             const respuesta = await axios.post('http://localhost:3000/api/usuario/login', {
                 correo: email,
                 password: password
             });
-            if (respuesta.status === 200) {
-                alert("¡Conexion exitosa: Bienvenido.");
-            console.log("Respuesta:", respuesta.data);
-            }
+            // Validacion del token
+            if (respuesta.data && respuesta.data.token) {
+            // Guardamos el el token de seguridad
+                localStorage.setItem('token_agenda', respuesta.data.token);
+
+                const datosUnificados = respuesta.data.usuario? respuesta.data.usuario : respuesta.data;
+                localStorage.setItem('rol_usuario', datosUnificados.tipo_usuario);
+                localStorage.setItem('nombre_usuario', datosUnificados.nombre);
+                localStorage.setItem('tipo_usuario', datosUnificados.tipo_usuario);
+                // Mensaje de ingreso exitoso
+                alert("Conexion exitosa: Bienvenido.");
+                navigate('/menu/principal');
+           }
         } catch (error) {
             console.log("Error completo:", error.response?.data || error.message);
                 alert("Error de conexion. Revisa el correo y la contraseña que esten en la base de datos.");
