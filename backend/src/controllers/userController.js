@@ -1,16 +1,32 @@
+const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
 // 1. Login / Buscar por email
 loginUser = async (req, res) => {
     try {
-        const { correo } = req.body;
+        const { correo, password: contrasena } = req.body;
         const user = await User.findByEmail(correo);
         if (!correo) {
             return res.status(404).json({ mensaje: "El correo es obligatorio" });
         }
-        if (user.length === 0) {
+        if (!user || user.length === 0) {
             return res.status(404).json({ mensaje: "Usuario no encontrado" });
         }
-        res.json(user[0]);
+        const usuarioReal = user;
+        const passwordCorrecto = await bcrypt.compare(contrasena, usuarioReal.password);
+        if (!passwordCorrecto) {
+            return res.status(401).json({ mensaje: "Contraseña incorrecta"});
+        }
+        const token = jwt.sign(
+           {id: usuarioReal.id, tipo_usuario: usuarioReal.tipo_usuario },
+           'mi_clave_secreta_del_sena_123',
+           { expiresIn: '2h' }
+        );
+        res.json({
+            mensaje:"Login exitoso",
+            usuario: usuarioReal,
+            token
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error en el servidor al buscar usuario" });
@@ -73,7 +89,12 @@ recuperarContrasena = async (req, res) => {
 // 4. Crear usuario (POST)
  createUser = async (req, res) => {
     try {
-        const id = await User.create(req.body);
+        const dataUsuario = req.body;
+        // Encriptamos la contraseña
+        const salt = await bcrypt.genSalt(10);
+        dataUsuario.password = await bcrypt.hash(dataUsuario.password, salt);
+        // Guardamos en la base de datos
+        const id = await User.create(dataUsuario);
         res.status(201).json({ mensaje: "Usuario creado con exito", id_usuario: id});
     } catch (error) {
         console.error(error);
