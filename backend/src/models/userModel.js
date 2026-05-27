@@ -26,10 +26,7 @@ const User = {
 
     // Buscar usuario por código de recuperación
     findByCodigoRecuperacion: async (codigo) => {
-<<<<<<< HEAD
-=======
         
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
         try {
             const sql = 'SELECT * FROM usuario WHERE codigo_recuperacion = ?';
             const [rows] = await db.execute(sql, [codigo]);
@@ -40,27 +37,6 @@ const User = {
         }
     },
 
-<<<<<<< HEAD
-=======
-    // Actualizar contraseña usando el código de recuperación
-    cambiarContrasenaPorCodigo: async (codigo, nuevaContrasena) => {
-        try {
-            const sql = `
-                UPDATE usuario
-                SET password = ?, codigo_recuperacion = NULL
-                WHERE codigo_recuperacion = ?
-            `;
-
-            const [result] = await db.execute(sql, [nuevaContrasena, codigo]);
-            return result;
-
-        } catch (error) {
-            console.error('Error en cambiarContrasenaPorCodigo:', error.message);
-            throw error;
-        }
-    },
-
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
 // Crear un usuario (para el registro)
 create: async (userData) => {
     try {

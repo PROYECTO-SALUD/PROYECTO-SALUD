@@ -1,11 +1,8 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
-<<<<<<< HEAD
 const jwt = require('jsonwebtoken');
-=======
 const { enviarCodigoRecuperacion } = require('../utils/emailServices');
 
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
 // 1. Login / Buscar por email
 loginUser = async (req, res) => {
     try {
@@ -14,7 +11,6 @@ loginUser = async (req, res) => {
         if (!correo) {
             return res.status(404).json({ mensaje: "El correo es obligatorio" });
         }
-<<<<<<< HEAD
         if (!user || user.length === 0) {
             return res.status(404).json({ mensaje: "Usuario no encontrado" });
         }
@@ -33,12 +29,6 @@ loginUser = async (req, res) => {
             usuario: usuarioReal,
             token
         });
-=======
-        if (!user) {
-            return res.status(404).json({ mensaje: "Usuario no encontrado" });
-        }
-        res.json(user);
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error en el servidor al buscar usuario" });
@@ -60,33 +50,21 @@ recuperarContrasena = async (req, res) => {
         const user = await User.findByEmail(correo);
 
         // Si no existe ningún usuario con ese correo
-<<<<<<< HEAD
         if (user.length === 0) {
             return res.status(404).json({ mensaje: "El correo no está registrado" });
         }
 
 
     // Si el correo existe, generamos un código aleatorio de 6 dígitos
-=======
         if (!user) {
             return res.status(404).json({ mensaje: "El correo no está registrado" });
         }
 
         // Si el correo existe, generamos un código aleatorio de 6 dígitos
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
         const codigoRecuperacion = Math.floor(100000 + Math.random() * 900000);
         
         // Por ahora lo mostramos en consola para probar
         console.log("Código de recuperación:", codigoRecuperacion);
-<<<<<<< HEAD
-        // Guardamos el código en la base de datos
-        await User.guardarCodigoRecuperacion(correo, codigoRecuperacion);
-        
-        // Si el correo existe, respondemos correctamente
-        return res.status(200).json({
-            mensaje: "Correo encontrado. Código generado correctamente.",
-            codigo: codigoRecuperacion
-=======
 
         // Guardamos el código en la base de datos
         await User.guardarCodigoRecuperacion(correo, codigoRecuperacion);
@@ -97,7 +75,6 @@ recuperarContrasena = async (req, res) => {
         // Si el correo existe, respondemos correctamente SIN enviar el código por seguridad
         return res.status(200).json({
             mensaje: "Correo encontrado. Código generado correctamente."
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
         });
     }
 
@@ -186,8 +163,6 @@ validarCodigoRecuperacion = async (req, res) => {
     }
 };
 
-<<<<<<< HEAD
-=======
 // Cambiar contraseña usando el código de recuperación
 cambiarContrasena = async (req, res) => {
     try {
@@ -235,16 +210,12 @@ cambiarContrasena = async (req, res) => {
     }
 };
 
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
 // Exportacion para las rutas
 module.exports = {
     loginUser,
     recuperarContrasena,
     validarCodigoRecuperacion,
-<<<<<<< HEAD
-=======
     cambiarContrasena,
->>>>>>> f3235ec815f1d6aafd5629105a52f228ee52fa6c
     getAllUser,
     createUser,
     updateUser,
