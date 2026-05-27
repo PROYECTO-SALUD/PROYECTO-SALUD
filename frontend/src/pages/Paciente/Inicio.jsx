@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BotonCerrarSesion from '../../components/BotonCerrarSesion';
-import './PanelPaciente.css';
+import './Inicio.css';
 
 
 
@@ -22,14 +22,19 @@ export default function PanelPaciente() {
     month: "long",
     year: "numeric",
   });
-  
+  const nombreUsuario = localStorage.getItem('nombre_usuario') || 'Paciente';
   const horaActual = fechaHora.toLocaleTimeString("es-CO", {
     hour: "2-digit",
     minute: "2-digit",
   });
 
   return (
-    <div className="panel-paciente">
+    <div className="panel-paciente" style={{ backgroundImage: "url('/imagenes/fondo.jpg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
+      minHeight: "100vh"
+     }}>
 
       <header className="pp-topbar">
         <div className="pp-brand">
@@ -57,8 +62,8 @@ export default function PanelPaciente() {
 
     <div className="pp-header-actions">
     <div className="pp-user-chip">
-    <div className="pp-avatar">MA</div>
-    <div className="pp-user-name">María Ángel</div>
+    <div className="pp-avatar">{nombreUsuario.charAt(0).toUpperCase()}</div>
+    <div className="pp-user-name">{nombreUsuario}</div>
   </div>
 
   <BotonCerrarSesion />
@@ -68,7 +73,7 @@ export default function PanelPaciente() {
       <main className="pp-content">
         <section className="pp-greeting">
           <div>
-            <h1>Buenos días, María</h1>
+            <h1>Buenos días, {nombreUsuario}</h1>
             <p>¿Qué deseas hacer hoy?</p>
           </div>
         </section>

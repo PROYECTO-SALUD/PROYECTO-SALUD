@@ -35,7 +35,7 @@ const Login = () => {
                 localStorage.setItem('tipo_usuario', datosUnificados.tipo_usuario);
                 // Mensaje de ingreso exitoso
                 alert("Conexion exitosa: Bienvenido.");
-                navigate('/menu/principal');
+                navigate('/inicio');
            }
         }
 

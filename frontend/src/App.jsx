@@ -8,7 +8,7 @@ import ValidarCodigo from './pages/Usuario/ValidarCodigo';
 import CambioContrasena from './pages/Usuario/CambioContrasena';
 import RegistroPaciente from './pages/Paciente/RegistroPaciente';
 import RegistroMedico from './pages/Medico/RegistroMedico';
-import PanelPaciente from './pages/Paciente/PanelPaciente';
+import Inicio from './pages/Paciente/Inicio';
 
 
 import Accesibilidad from './components/Accesibilidad';
@@ -62,7 +62,7 @@ function App() {
         <Route path='/accesibilidad' element={<Accesibilidad />} />
         
         {/* RUTA: Panel del Paciente */}
-        <Route path='/panel-paciente' element={<PanelPaciente />} />
+        <Route path='/inicio' element={<Inicio />} />
         {/* Siempre debe ir al final. REGLA DE SEGURIDAD: Si alguien escribe una ruta que no existe, lo mandamos al Login */}
         <Route path='*' element={<Navigate to='/login' />} />
 
