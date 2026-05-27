@@ -5,6 +5,8 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import BotonAyuda from '../../components/BotonAyuda';
+
+
 import  axios  from 'axios';
 
 const Login = () => {
@@ -35,33 +37,35 @@ const Login = () => {
                 alert("Conexion exitosa: Bienvenido.");
                 navigate('/menu/principal');
            }
-        } catch (error) {
+        }
+
+        catch (error) {
             console.log("Error completo:", error.response?.data || error.message);
                 alert("Error de conexion. Revisa el correo y la contraseña que esten en la base de datos.");
-            }
+          }
         };
     
 
-return (
-    //Usamos PrimeFlex para centrar todo en la pantalla
-    <div className= 'flex align-items-center justify-content-center'
-    style={{
-        backgroundImage: "url('/imagenes/fondo.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        height: '100vh',
-        width: '100vw',
-        position: 'absolute',
-        top: 0,
-        left: 0
-    }}>
-    <Card className='shadow-8' style={{ width: '22rem', borderRadius: '15px', backgroundColor: 'rgba(255, 255, 255, 0.92)' }}>
-        <div className='flex flex-column align-items-center mb-4'>
-            <img src='/imagenes/logo.png' alt='Logo Agenda Salud' style={{ width: '150px' }} />
-            <h2 className='text-900 font-bold mt-3 mb-0'>BIENVENIDOS</h2>
-            <p className='text-600 font-mediun'>Agenda Salud</p>
-        </div>
+    return (
+        //Usamos PrimeFlex para centrar todo en la pantalla
+        <div className= 'flex align-items-center justify-content-center'
+        style={{
+            backgroundImage: "url('/imagenes/fondo.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '100vh',
+            width: '100vw',
+            position: 'absolute',
+            top: 0,
+            left: 0
+        }}>
+            <Card className='shadow-8' style={{ width: '22rem', borderRadius: '15px', backgroundColor: 'rgba(255, 255, 255, 0.92)' }}>
+                <div className='flex flex-column align-items-center mb-4'>
+                    <img src='/imagenes/logo.png' alt='Logo Agenda Salud' style={{ width: '150px' }} />
+                    <h2 className='text-900 font-bold mt-3 mb-0'>BIENVENIDOS</h2>
+                    <p className='text-600 font-mediun'>Agenda Salud</p>
+                </div>
 
         <form onSubmit={handleLogin} className='flex flex-column gap-3'>
             <div className='flex flex-column gap-2'>
@@ -70,15 +74,18 @@ return (
                     id='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder='usuario @correo.com'
-                    className='w-full'
+                    placeholder='usuario@correo.com'
+                    className='w-full p-inputtext-sm'
                 />
             </div>
             
             <div className='flex flex-column gap-2'>
-                <label htmlFor='password'title='Contraseña' className='text-sm font-bold'>Contraseña</label>
+                <label htmlFor='password'title='Contraseña' className='text-sm font-bold'> Contraseña</label>
                     <Password id='password' value={password} onChange={(e) => setPassword(e.target.value)}
-                    toggleMask feedback={false} className='w-full' inputClassName='w-full p-inputtext-sm' 
+                    toggleMask feedback={false}
+                    className='w-full'
+                    inputClassName='w-full p-inputtext-sm'
+                    placeholder='Contraseña'
                 />
             </div>
 
@@ -126,7 +133,6 @@ return (
     </Card>
 
     <BotonAyuda />
-
     </div>
 );
 };
