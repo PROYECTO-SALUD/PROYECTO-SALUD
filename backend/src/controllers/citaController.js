@@ -13,7 +13,7 @@ exports.getAllCitas = async (req, res) => {
         try {
         const datos = req.body; // id_paciente, id_medico, fecha, hora, estado, motivo 
         const result = await Cita.create(datos);
-            res.status(201).json({ mensaje: "Cita programada con exito", id: result.inserId,
+            res.status(201).json({ mensaje: "Cita programada con exito", id: result.insertId,
             recordatorio: [
                 "Se recomienda llegar 20 minutos antes de su cita, para evitar retrasos y garantizar una atencion oportuna.",
                 "Recuerde traer su documento de identidad y cualquier informacion medica relevante para su consulta.",
@@ -45,7 +45,7 @@ exports.getAllCitas = async (req, res) => {
     exports.deleteCita = async (req, res) => {
         try {
         const { id } = req.params;
-            await Cita.delete(id,);
+            await Cita.delete(id);
             res.status(200).json({ mensaje: "Cita eliminada correctamente",
                 nota: "El espacio ha sido liberado en la agenda medica."
             });

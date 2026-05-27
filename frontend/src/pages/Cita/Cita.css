@@ -1,0 +1,78 @@
+/* Fondo general */
+.fondo-pagina-cita {
+    background: url('/imagenes/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Tarjeta principal */
+.tarjeta-cita {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+/* Logo */
+.logo-cita {
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 130px;
+    height: auto;
+}
+
+/* Título */
+.titulo-cita {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a2530;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-cita {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Botones */
+.boton-cita {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #a8e6cf;
+    color: #1a2530;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover botones */
+.boton-cita:hover {
+    background-color: #96d1bc;
+}
+/* Botón secundario (Volver) */
+.boton-cita.secundario {
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+.boton-cita.secundario:hover {
+    background-color: #d5d5d5;
+}
