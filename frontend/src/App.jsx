@@ -9,7 +9,7 @@ import CambioContrasena from './pages/Usuario/CambioContrasena';
 import RegistroPaciente from './pages/Paciente/RegistroPaciente';
 import RegistroMedico from './pages/Medico/RegistroMedico';
 import Inicio from './pages/Paciente/Inicio';
-
+import Citas from './pages/Citas/Citas';
 
 import Accesibilidad from './components/Accesibilidad';
 import BotonAyuda from './components/BotonAyuda';
@@ -60,6 +60,8 @@ function App() {
 
         {/*Ruta para accesibilidad*/}
         <Route path='/accesibilidad' element={<Accesibilidad />} />
+        {/* RUTA: Agendar Citas */}
+        <Route path="/agendar-cita" element={<Citas />} /> 
         
         {/* RUTA: Panel del Paciente */}
         <Route path='/inicio' element={<Inicio />} />

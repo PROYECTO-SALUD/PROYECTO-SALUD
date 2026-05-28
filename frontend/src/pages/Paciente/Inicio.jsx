@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import BotonCerrarSesion from '../../components/BotonCerrarSesion';
+import { Link } from 'react-router-dom';
 import './Inicio.css';
+
 
 
 
@@ -79,6 +81,7 @@ export default function PanelPaciente() {
         </section>
 
         <section className="pp-nav-grid">
+           <Link to="/agendar-cita">
           <button type="button" className="pp-nav-card">
             <div className="pp-nav-icon pp-ic-verde">
               <i className="pi pi-calendar-plus" />
@@ -89,6 +92,7 @@ export default function PanelPaciente() {
               Reserva una nueva cita con el especialista que desees
             </p>
           </button>
+        </Link>
 
           <button type="button" className="pp-nav-card">
             <div className="pp-nav-icon pp-ic-azul">
